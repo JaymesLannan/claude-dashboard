@@ -8,7 +8,7 @@ import {
   RefreshCw,
   ArrowRight,
   Activity,
-  Star,
+  Sparkles,
 } from "lucide-react";
 
 const features = [
@@ -16,13 +16,13 @@ const features = [
     icon: BarChart3,
     title: "Token Analytics",
     description:
-      "Track input, output, cache read, and cache creation tokens across all your API calls with detailed breakdowns.",
+      "Track input, output, cache read, and cache creation tokens across all your API calls with granular breakdowns.",
   },
   {
     icon: DollarSign,
     title: "Cost Tracking",
     description:
-      "Monitor your USD spend in real-time. Understand exactly what you're paying per model, per day, per workspace.",
+      "Monitor USD spend in real-time. Understand exactly what you're paying per model, per day, per workspace.",
   },
   {
     icon: Activity,
@@ -34,13 +34,13 @@ const features = [
     icon: Zap,
     title: "Model Breakdown",
     description:
-      "Compare usage across Opus, Sonnet, Haiku, and Fable. Make informed decisions about which model to use when.",
+      "Compare usage across Opus, Sonnet, Haiku, and Fable. Make informed decisions about model selection.",
   },
   {
     icon: Clock,
     title: "Date Range Filtering",
     description:
-      "Drill into any time period — today, last week, last month, or a custom range — with a single click.",
+      "Drill into any time period — today, last week, last month, or a fully custom range — in one click.",
   },
   {
     icon: RefreshCw,
@@ -57,54 +57,35 @@ const stats = [
   { label: "Data freshness", value: "~5 min" },
 ];
 
-function Stars({ count, className }: { count: number; className?: string }) {
-  return (
-    <div className={`flex items-center gap-1 ${className ?? ""}`}>
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-      ))}
-    </div>
-  );
-}
-
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      {/* Red top stripe */}
-      <div className="h-2 bg-gradient-to-r from-red-700 via-red-600 to-red-700" />
+    <div className="min-h-screen bg-[#09090b] text-white flex flex-col">
 
       {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-blue-900/10 bg-white/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#09090b]/80 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-blue-900 shadow-md">
-              <Star className="h-4 w-4 fill-white text-white" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/25">
+              <BarChart3 className="h-4 w-4 text-white" />
             </div>
-            <div>
-              <span className="text-lg font-bold tracking-tight text-blue-900">
-                Claude Dashboard
-              </span>
-              <div className="flex gap-0.5 mt-[-2px]">
-                <div className="h-0.5 flex-1 bg-red-600" />
-                <div className="h-0.5 flex-1 bg-white border-b border-gray-200" />
-                <div className="h-0.5 flex-1 bg-blue-900" />
-              </div>
-            </div>
+            <span className="text-[15px] font-semibold tracking-tight text-white">
+              Claude Dashboard
+            </span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-blue-900/70">
-            <a href="#features" className="hover:text-blue-900 transition-colors">Features</a>
-            <a href="#metrics" className="hover:text-blue-900 transition-colors">Metrics</a>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
+            <a href="#features" className="hover:text-white transition-colors duration-150">Features</a>
+            <a href="#metrics" className="hover:text-white transition-colors duration-150">Metrics</a>
             <Link
               href="/login"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100 transition-colors duration-150"
             >
               Sign in
             </Link>
           </nav>
           <Link
             href="/login"
-            className="md:hidden inline-flex items-center gap-1.5 rounded-lg bg-blue-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-blue-800 transition-colors"
+            className="md:hidden inline-flex items-center rounded-lg bg-white px-3 py-1.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-100 transition-colors"
           >
             Sign in
           </Link>
@@ -112,53 +93,73 @@ export default function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-blue-900 py-24 px-6">
-        {/* Subtle star field background */}
+      <section className="relative flex flex-col items-center justify-center px-6 pt-24 pb-32 text-center overflow-hidden">
+        {/* Glow orbs */}
         <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-10"
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full opacity-20"
           style={{
-            backgroundImage:
-              "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+            background:
+              "radial-gradient(ellipse, #7c3aed 0%, #4f46e5 40%, transparent 70%)",
           }}
         />
-        {/* Bottom wave divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-white"
-          style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/4 top-1/2 h-72 w-72 rounded-full opacity-10 blur-3xl"
+          style={{ background: "#06b6d4" }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-1/4 top-1/2 h-72 w-72 rounded-full opacity-10 blur-3xl"
+          style={{ background: "#8b5cf6" }}
         />
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <Stars count={13} className="mb-6 justify-center" />
+        {/* Subtle dot grid */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage: "radial-gradient(circle, #71717a 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
 
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm">
-            <Shield className="h-3.5 w-3.5" />
+        <div className="relative max-w-4xl">
+          {/* Badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-300">
+            <Sparkles className="h-3.5 w-3.5" />
             Self-hosted · Your data stays local
           </div>
 
-          <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
-            Built for Americans
+          <h1 className="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl lg:text-[72px] lg:leading-[1.05]">
+            <span className="text-white">Your Claude API</span>
             <br />
-            <span className="text-red-400">Who Mean Business</span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #a78bfa 0%, #6366f1 50%, #38bdf8 100%)",
+              }}
+            >
+              usage, visualized
+            </span>
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-xl text-blue-200 leading-relaxed">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-zinc-400 leading-relaxed">
             A self-hosted dashboard that syncs with the Anthropic Admin API to give you
             clear visibility into token consumption, costs, and model usage — all in one place.
-            Freedom. Transparency. Control.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/login"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-red-600 px-8 py-4 text-base font-bold text-white shadow-lg shadow-red-900/40 hover:bg-red-700 transition-all hover:-translate-y-0.5"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-7 py-3.5 text-[15px] font-semibold text-white shadow-xl shadow-violet-500/20 hover:from-violet-500 hover:to-indigo-500 transition-all duration-200 hover:-translate-y-0.5"
             >
               Open Dashboard
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="#features"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white hover:bg-white/20 transition-colors backdrop-blur-sm"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-7 py-3.5 text-[15px] font-semibold text-zinc-300 hover:bg-white/10 hover:text-white transition-all duration-200"
             >
               Learn more
             </a>
@@ -166,126 +167,111 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Red-white-blue stripe divider */}
-      <div className="flex h-2">
-        <div className="flex-1 bg-red-600" />
-        <div className="flex-1 bg-white border-y border-gray-100" />
-        <div className="flex-1 bg-blue-900" />
-      </div>
-
-      {/* Stats strip */}
-      <section id="metrics" className="bg-gray-50 py-14 px-6 border-b border-gray-100">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-8 flex items-center justify-center gap-3">
-            <div className="h-px flex-1 bg-red-200" />
-            <Stars count={5} />
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-900">
-              By the Numbers
-            </p>
-            <Stars count={5} />
-            <div className="h-px flex-1 bg-blue-200" />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl font-extrabold text-blue-900">{s.value}</div>
-                <div className="mt-1 text-sm text-gray-500">{s.label}</div>
-              </div>
-            ))}
-          </div>
+      {/* Stats */}
+      <section
+        id="metrics"
+        className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-14"
+      >
+        <div className="mx-auto max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="text-3xl font-bold text-white">{s.value}</div>
+              <div className="mt-1 text-sm text-zinc-500">{s.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="py-24 px-6">
+      <section id="features" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <Stars count={7} className="mb-4 justify-center" />
-            <h2 className="text-3xl font-extrabold text-blue-900 md:text-4xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-violet-400">
+              Features
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
               Everything you need to understand your usage
             </h2>
-            <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
-              Built on the values of transparency and independence. No third-party analytics,
-              no data leaving your infrastructure — your numbers, your rules.
+            <p className="mt-4 text-base text-zinc-400 max-w-xl mx-auto leading-relaxed">
+              No third-party analytics, no data leaving your infrastructure.
+              Built specifically for the Anthropic API.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {features.map((f) => (
               <div
                 key={f.title}
-                className="group relative rounded-2xl border bg-white p-7 shadow-sm hover:shadow-md transition-all overflow-hidden"
-                style={{
-                  borderColor: i % 3 === 0 ? "#dc2626" : i % 3 === 1 ? "#1e3a8a" : "#e5e7eb",
-                }}
+                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 hover:border-violet-500/40 hover:bg-white/[0.06] transition-all duration-200"
               >
-                {/* Accent corner */}
-                <div
-                  className="absolute top-0 right-0 h-8 w-8 rounded-bl-2xl"
+                {/* Hover glow */}
+                <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: i % 3 === 0 ? "#dc2626" : i % 3 === 1 ? "#1e3a8a" : "#f3f4f6",
+                    background: "radial-gradient(200px at 50% 0%, rgba(124,58,237,0.08), transparent)"
                   }}
                 />
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
-                  <f.icon className="h-5 w-5 text-blue-900" />
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 border border-violet-500/20">
+                  <f.icon className="h-5 w-5 text-violet-400" />
                 </div>
-                <h3 className="mb-2 text-base font-bold text-blue-900">{f.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
+                <h3 className="mb-2 text-[15px] font-semibold text-white">{f.title}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">{f.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA — red section */}
-      <section className="relative overflow-hidden bg-red-600 py-20 px-6">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255,255,255,0.4) 18px, rgba(255,255,255,0.4) 20px)",
-          }}
-        />
-        <div className="relative mx-auto max-w-2xl text-center">
-          <Stars count={13} className="mb-4 justify-center" />
-          <h2 className="text-3xl font-extrabold text-white md:text-4xl">
-            Ready to take command?
-          </h2>
-          <p className="mt-4 text-lg text-red-100">
-            Sign in with your Google account to access your personal dashboard.
-            One nation, under data.
-          </p>
-          <Link
-            href="/login"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-bold text-blue-900 shadow-lg hover:bg-blue-50 transition-colors"
-          >
-            Get started
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+      {/* CTA */}
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-indigo-600/10 to-transparent p-px">
+            <div className="rounded-3xl bg-gradient-to-br from-zinc-900 to-zinc-950 px-10 py-14 text-center">
+              {/* Inner glow */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-3xl opacity-40"
+                style={{
+                  background: "radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.3), transparent 60%)",
+                }}
+              />
+              <div className="relative">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-violet-400">
+                  <Shield className="h-3 w-3" />
+                  Google OAuth protected
+                </div>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
+                  Ready to see your usage?
+                </h2>
+                <p className="mb-8 text-base text-zinc-400">
+                  Sign in with your Google account to access your personal dashboard.
+                </p>
+                <Link
+                  href="/login"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3.5 text-[15px] font-semibold text-white shadow-xl shadow-violet-500/25 hover:from-violet-500 hover:to-indigo-500 transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Get started free
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t-4 border-blue-900 bg-blue-900 py-8 px-6">
+      <footer className="mt-auto border-t border-white/[0.06] px-6 py-8">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 text-sm text-white/80">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10">
-              <Star className="h-3.5 w-3.5 fill-white text-white" />
+          <div className="flex items-center gap-2 text-sm text-zinc-600">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600">
+              <BarChart3 className="h-3 w-3 text-white" />
             </div>
             Claude Dashboard — self-hosted Anthropic usage analytics
           </div>
-          <div className="flex items-center gap-3">
-            <div className="h-4 w-1.5 rounded-full bg-red-500" />
-            <div className="h-4 w-1.5 rounded-full bg-white/60" />
-            <div className="h-4 w-1.5 rounded-full bg-blue-400" />
-            <p className="text-sm text-white/50 ml-1">Data sourced from the Anthropic Admin API</p>
-          </div>
+          <p className="text-sm text-zinc-700">
+            Data sourced from the Anthropic Admin API
+          </p>
         </div>
       </footer>
-
-      {/* Blue bottom stripe */}
-      <div className="h-2 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900" />
     </div>
   );
 }
