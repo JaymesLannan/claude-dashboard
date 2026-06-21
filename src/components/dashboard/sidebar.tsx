@@ -22,11 +22,13 @@ export function DashboardSidebar() {
   return (
     <aside className="flex w-60 flex-col border-r border-border bg-card">
       {/* Logo */}
-      <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-          <BarChart3 className="h-4 w-4 text-white" />
-        </div>
-        <span className="font-semibold text-foreground">Claude Dashboard</span>
+      <div className="flex h-16 items-center border-b border-border px-5">
+        <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
+            <BarChart3 className="h-4 w-4 text-white" />
+          </div>
+          <span className="font-semibold text-foreground">Claude Dashboard</span>
+        </Link>
       </div>
 
       {/* Nav */}
