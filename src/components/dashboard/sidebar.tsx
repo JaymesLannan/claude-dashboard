@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BarChart3,
-  LayoutDashboard,
   Activity,
   DollarSign,
   Settings,
@@ -13,7 +12,6 @@ import {
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
   { href: "/dashboard/usage", label: "Usage", icon: Activity },
   { href: "/dashboard/costs", label: "Costs", icon: DollarSign },
 ];
@@ -34,10 +32,7 @@ export function DashboardSidebar() {
       {/* Nav */}
       <nav className="flex-1 space-y-1 px-3 py-4">
         {nav.map((item) => {
-          const active =
-            item.href === "/dashboard"
-              ? pathname === "/dashboard"
-              : pathname.startsWith(item.href);
+          const active = pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}
