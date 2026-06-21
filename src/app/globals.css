@@ -58,4 +58,9 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  /* Smooth theme transitions */
+  *, *::before, *::after {
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
 }

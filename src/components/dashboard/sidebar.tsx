@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, LayoutDashboard, Activity, DollarSign, Settings } from "lucide-react";
+import {
+  BarChart3,
+  LayoutDashboard,
+  Activity,
+  DollarSign,
+  Settings,
+  Home,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -15,13 +22,13 @@ export function DashboardSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-60 flex-col border-r border-gray-200 bg-white">
+    <aside className="flex w-60 flex-col border-r border-border bg-card">
       {/* Logo */}
-      <div className="flex h-16 items-center gap-2.5 border-b border-gray-100 px-5">
+      <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
           <BarChart3 className="h-4 w-4 text-white" />
         </div>
-        <span className="font-semibold text-gray-900">Claude Dashboard</span>
+        <span className="font-semibold text-foreground">Claude Dashboard</span>
       </div>
 
       {/* Nav */}
@@ -38,11 +45,16 @@ export function DashboardSidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 active
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-400"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
               )}
             >
-              <item.icon className={cn("h-4 w-4", active ? "text-blue-600" : "text-gray-400")} />
+              <item.icon
+                className={cn(
+                  "h-4 w-4",
+                  active ? "text-blue-600 dark:text-blue-400" : "text-muted-foreground"
+                )}
+              />
               {item.label}
             </Link>
           );
@@ -50,13 +62,25 @@ export function DashboardSidebar() {
       </nav>
 
       {/* Bottom */}
-      <div className="border-t border-gray-100 px-3 py-4">
+      <div className="border-t border-border px-3 py-4 space-y-1">
         <Link
           href="/dashboard/settings"
-          className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            pathname === "/dashboard/settings"
+              ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-400"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+          )}
         >
-          <Settings className="h-4 w-4 text-gray-400" />
+          <Settings className="h-4 w-4" />
           Settings
+        </Link>
+        <Link
+          href="/"
+          className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+        >
+          <Home className="h-4 w-4" />
+          Home
         </Link>
       </div>
     </aside>
