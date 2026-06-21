@@ -50,13 +50,6 @@ const features = [
   },
 ];
 
-const stats = [
-  { label: "Metrics tracked", value: "6+" },
-  { label: "Sync frequency", value: "Hourly" },
-  { label: "Models supported", value: "4" },
-  { label: "Data freshness", value: "~5 min" },
-];
-
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#09090b] text-white flex flex-col">
@@ -75,7 +68,6 @@ export default function LandingPage() {
 
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
             <a href="#features" className="hover:text-white transition-colors duration-150">Features</a>
-            <a href="#metrics" className="hover:text-white transition-colors duration-150">Metrics</a>
             <Link
               href="/login"
               className="inline-flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100 transition-colors duration-150"
@@ -164,21 +156,9 @@ export default function LandingPage() {
               Learn more
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section
-        id="metrics"
-        className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-14"
-      >
-        <div className="mx-auto max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl font-bold text-white">{s.value}</div>
-              <div className="mt-1 text-sm text-zinc-500">{s.label}</div>
-            </div>
-          ))}
+          <p className="mt-5 text-sm text-zinc-600">
+            Sign in to view personal usage metrics
+          </p>
         </div>
       </section>
 
