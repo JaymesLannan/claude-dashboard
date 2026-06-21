@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { RefreshCw, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { RefreshCw, CheckCircle2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
@@ -12,11 +12,11 @@ interface SyncLog {
   completedAt?: string | null;
   status: string;
   recordsSynced: number;
-  errorMessage?: string | null;
 }
 
 export function SyncStatus() {
   const [log, setLog] = React.useState<SyncLog | null>(null);
+  const [syncEnabled, setSyncEnabled] = React.useState(false);
   const [syncing, setSyncing] = React.useState(false);
 
   async function fetchStatus() {
@@ -24,6 +24,7 @@ export function SyncStatus() {
     if (res.ok) {
       const data = await res.json();
       setLog(data.lastSync);
+      setSyncEnabled(data.syncEnabled);
     }
   }
 
@@ -41,11 +42,11 @@ export function SyncStatus() {
     fetchStatus();
   }, []);
 
+  if (!syncEnabled) return null;
+
   const icon =
     log?.status === "success" ? (
       <CheckCircle2 className="h-4 w-4 text-green-500" />
-    ) : log?.status === "error" ? (
-      <XCircle className="h-4 w-4 text-red-500" />
     ) : log?.status === "running" ? (
       <Clock className="h-4 w-4 text-yellow-500" />
     ) : null;

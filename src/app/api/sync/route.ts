@@ -29,5 +29,8 @@ export async function GET() {
     orderBy: { startedAt: "desc" },
   });
 
-  return NextResponse.json({ lastSync });
+  const key = process.env.ANTHROPIC_ADMIN_KEY;
+  const syncEnabled = !!key && key !== "disabled";
+
+  return NextResponse.json({ lastSync, syncEnabled });
 }
