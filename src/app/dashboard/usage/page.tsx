@@ -77,7 +77,7 @@ export default function UsagePage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Token Usage</h1>
+          <h1 className="text-xl font-bold text-white">Token Usage</h1>
           <p className="text-sm text-muted-foreground">
             Detailed breakdown of input, output, and cache token consumption
           </p>
