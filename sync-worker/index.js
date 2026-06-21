@@ -1,6 +1,11 @@
 import cron from "node-cron";
 import { PrismaClient } from "@prisma/client";
 
+if (!process.env.ANTHROPIC_ADMIN_KEY || process.env.ANTHROPIC_ADMIN_KEY === "disabled") {
+  console.log("[sync] No ANTHROPIC_ADMIN_KEY set — worker disabled. Using seeded data.");
+  process.exit(0);
+}
+
 const db = new PrismaClient();
 const ADMIN_API_BASE = "https://api.anthropic.com";
 

@@ -82,8 +82,8 @@ The sync worker runs independently of the web app. It polls the Anthropic Admin 
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- An [Anthropic Admin API key](https://console.anthropic.com/settings/admin-keys) (`sk-ant-admin01-...`)
 - A [Google OAuth 2.0 client](https://console.cloud.google.com/apis/credentials)
+- Optionally: an [Anthropic Admin API key](https://console.anthropic.com/settings/admin-keys) for live data sync
 
 ### 1. Clone the repo
 
@@ -109,13 +109,14 @@ NEXTAUTH_URL=http://localhost:3000
 GOOGLE_CLIENT_ID=       # from Google Cloud Console
 GOOGLE_CLIENT_SECRET=   # from Google Cloud Console
 
-ANTHROPIC_ADMIN_KEY=    # sk-ant-admin01-...
+ANTHROPIC_ADMIN_KEY=disabled   # set to sk-ant-admin01-... for live sync
 ```
 
 **Google OAuth setup:**
 1. Go to [Google Cloud Console → Credentials](https://console.cloud.google.com/apis/credentials)
 2. Create an OAuth 2.0 Client ID (Web application)
 3. Add `http://localhost:3000/api/auth/callback/google` as an authorized redirect URI
+4. Go to **APIs & Services → OAuth consent screen → Audience** and set User Type to **External**, then add your Gmail as a test user
 
 ### 3. Start the stack
 
@@ -123,15 +124,18 @@ ANTHROPIC_ADMIN_KEY=    # sk-ant-admin01-...
 docker compose up --build -d
 ```
 
-This starts four services:
+This starts the following services:
 - `db` — PostgreSQL database
-- `migrate` — runs Prisma migrations then exits
+- `migrate` — creates all tables via Prisma then exits
+- `seed` — populates 30 days of realistic demo data then exits
 - `app` — Next.js web app on port 3000
-- `worker` — hourly sync cron job
+- `worker` — hourly sync cron job (exits immediately if no Admin key is set)
 
 ### 4. Open the dashboard
 
-Navigate to [http://localhost:3000](http://localhost:3000), sign in with Google, then click **Sync now** to pull your first batch of data.
+Navigate to [http://localhost:3000](http://localhost:3000) and sign in with Google. The dashboard will be pre-populated with 30 days of realistic demo data.
+
+To pull live data from the Anthropic API, set `ANTHROPIC_ADMIN_KEY` in your `.env` and click **Sync now** in the dashboard.
 
 ### Stopping
 
