@@ -1,5 +1,7 @@
 # Claude Dashboard
 
+![Claude Dashboard Screenshot](public/dashboard-screenshot.jpg)
+
 A self-hosted analytics dashboard for monitoring [Anthropic Claude](https://anthropic.com) API usage — token consumption, costs, request volume, and model breakdown — with hourly automatic data sync and robust date range filtering.
 
 ![Next.js](https://img.shields.io/badge/Next.js_15-black?style=flat&logo=next.js)
