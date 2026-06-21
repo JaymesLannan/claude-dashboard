@@ -10,6 +10,7 @@ import {
   Activity,
   Sparkles,
 } from "lucide-react";
+import { MetricsNavLink } from "@/components/metrics-modal";
 
 const features = [
   {
@@ -68,6 +69,7 @@ export default function LandingPage() {
 
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
             <a href="#features" className="hover:text-white transition-colors duration-150">Features</a>
+            <MetricsNavLink />
             <Link
               href="/login"
               className="inline-flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100 transition-colors duration-150"
